@@ -1,4 +1,5 @@
 'use client'
+import posthog from 'posthog-js'
 import Image from 'next/image'
 import React from 'react'
 
@@ -7,6 +8,7 @@ const ExploreBtn = () => {
     <button
       type="button"
       onClick={() => {
+        posthog.capture('explore_events_button_clicked', { scroll_target: 'events' })
         console.log("Explore button clicked")
         document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })
       }}
